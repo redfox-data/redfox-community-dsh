@@ -1,6 +1,24 @@
+<p align="center">
+  <a href="https://redfox.hk/?source=github">
+    <img src="https://lyy.redfox.hk/page/logo-redfox-name.png" alt="RedFox Logo" width="200">
+  </a>
+</p>
+
+<p align="right">
+  中文
+  <a href="https://github.com/redfox-data/redfox-community-dsh/blob/main/README.en.md">English</a>
+</p>
+
 # redfox-community-dsh
 
-红狐社区技能的 DSH（DeepSeek Harness）官方 bundle 插件包：100+ 社媒数据技能（抖音 / 小红书 / 快手 / B站 / 公众号 / 视频号 / 微博 / YouTube / TikTok 等），以原生 DSH skill 形式一键安装。
+红狐数据（RedFoxHub）Skills的 DSH（DeepSeek Harness）官方 bundle 插件包：100+ 社媒数据技能（抖音 / 小红书 / 快手 / B站 / 公众号 / 视频号 / 微博 / YouTube / TikTok 等），以原生 DSH skill 形式一键安装。
+
+## 功能亮点
+
+- **112 枚技能即装即用**：覆盖内容搜索、热榜追踪、评论分析、视频下载、文案创作、账号诊断、日报订阅等场景
+- **主流平台全覆盖**：抖音、小红书、快手、B站、公众号、视频号、微博、知乎、头条，以及 YouTube、TikTok、Instagram、X(Twitter) 等海外平台
+- **原生体验**：以官方 bundle 技能包格式发布，安装后技能直接进入会话技能目录，支持 `/技能名` 手势精准调用
+- **持续更新**：技能库不断扩充与修订，插件包自动跟进，重新安装即可获取最新版本
 
 ## 安装
 
@@ -9,46 +27,38 @@ dsh plugin --profile web add github:redfox-data/redfox-community-dsh
 dsh --profile web
 ```
 
-仓库根以官方 bundle 技能包格式发布（`package.json` 声明 `dsh.bundle.patch`，`index.mjs` 用官方 `FileSystemSkillProvider` 把 `skills/` 注册为包内技能根，只挂载包内目录，不重扫用户/项目技能根）。安装后重启 dsh web 生效。
+安装后重启 dsh web 生效。
 
-## 仓库分工（重要）
+## 使用
 
-| 仓库 | 职责 | 谁改 |
-|------|------|------|
-| [redfox-community](https://github.com/redfox-data/redfox-community)（hub） | 唯一权威的 `SKILL.md` 技能正文 | 日常改技能只改这里 |
-| redfox-community-dsh（本仓） | dsh 包装代码 + 从 hub **单向镜像**过来的 `skills/` | 只改插件代码；`skills/` 交给机器人同步 |
+重启后，全部技能自动出现在技能目录中：
 
-数据流：
+- 直接说出需求即可，Agent 会自动匹配技能，例如「搜一下小红书上最近的 AI 笔记」「分析这条抖音作品的评论」
+- 也可以用 `/技能名` 手势精准调用，如 `/douyin-search`、`/xiaohongshu-write`
 
-```text
-redfox-community  --(CI 单向同步 skills/)-->  redfox-community-dsh
-redfox-community-dsh  --(绝不回写)--------->  redfox-community
+## 技能一览
+
+| 平台 / 领域 | 数量 | 代表技能 |
+|-------------|------|----------|
+| 小红书 | 17 | 笔记搜索 / 实时搜索、评论分析、封面设计、账号诊断、对标账号推荐、笔记创作、涨粉榜单 |
+| 微信生态 | 19 | 公众号搜索 / 订阅、10w+ 热文推送、原创热文、视频号作品查询、爆款封面、AI 日报 |
+| 抖音 | 14 | 作品搜索 / 实时搜索、热榜、日榜 / 飙升榜、评论分析、账号订阅、TOP 账号榜 |
+| B站 | 7 | 视频搜索 / 下载、评论分析、关键词找账号 / 找作品、AI 日报 |
+| 快手 | 6 | 作品搜索、评论分析、视频下载、AI 日报 |
+| 微博 | 4 | 热搜榜、博文搜索、用户动态回采、评论分析 |
+| 海外平台 | 9 | YouTube 下载 / 提文案 / 评论、TikTok 视频与主页下载、Instagram 下载、X 下载 / 评论 / 作品搜索 |
+| 创作工具 | 10+ | 多平台文案改写、违禁词检测、AI 生图、AI 生视频、去 AI 味、视频提示词专家 |
+| 信息聚合 | — | 7 平台热搜聚合、文旅 / 短剧行业信息源、A股舆情、跨平台话题研究 |
+
+完整技能列表见 [skills/](skills) 目录。
+
+## 更新与钉版本
+
+技能库持续更新，重新执行安装命令即可拉取最新版：
+
+```sh
+dsh plugin --profile web add -w github:redfox-data/redfox-community-dsh
 ```
-
-**维护约定：**
-
-- 技能正文（`skills/**/SKILL.md` 及其资源）**只在 hub 仓维护**，本仓 `skills/` 是只读镜像；只改 `skills/` 的 PR 会被拒绝，下次同步也会被覆盖。
-- 本仓只维护 dsh 包装：`package.json` / `cordis.patch.yml` / `index.mjs` / `.github/workflows/`。
-- dsh 专属说明写在本 README 或 `docs/`，不写进 hub 的 `SKILL.md`（除非两边都适用）。
-- 内容变更（skills 同步外的包装改动）请 bump `package.json` 的 `version`，让市场能检出更新。
-
-## 同步机制
-
-- `.github/workflows/sync-skills.yml` 每小时整点拉取 hub 最新 `skills/` 覆盖本仓（也支持 Actions 页手动触发）。
-- 若 hub 仓配置了 `notify-dsh.yml`（push 到 `skills/**` 时发 `repository_dispatch`），则 hub 一更新本仓即时跟随。
-- hub 仓为私有时：在本仓 Settings → Secrets 配置 `HUB_READ_TOKEN`（对 hub 有读权限的 PAT），并在 workflow 中启用对应行。
-
-## 目录结构
-
-```text
-package.json              官方 bundle 声明（dsh.bundle.patch / marketplace 信息）
-index.mjs                 bundle 入口：FileSystemSkillProvider 注册 skills/
-cordis.patch.yml          层栈 insert 行（id = index.mjs 的 name，name = 包名）
-skills/                   从 hub 单向同步的技能镜像（勿手改）
-.github/workflows/        sync-skills.yml 单向同步流水线
-```
-
-## 钉版本
 
 需要固定版本时，按 commit 或 release tag 安装：
 
@@ -56,4 +66,6 @@ skills/                   从 hub 单向同步的技能镜像（勿手改）
 dsh plugin --profile web add 'github:redfox-data/redfox-community-dsh#<commit>'
 ```
 
-版权：MIT（与 hub 仓一致）。
+## 许可证
+
+MIT
