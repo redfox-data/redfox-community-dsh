@@ -1,0 +1,52 @@
+name: Sync skills from hub
+
+# One-way mirror: redfox-community (hub) -> this repo's skills/.
+# Skill content is ONLY maintained in the hub repo. Never edit skills/ here.
+on:
+  # Trigger 1: hourly schedule (simple, works even without hub-side setup)
+  schedule:
+    - cron: '0 * * * *'
+  # Trigger 2: manual run from the Actions tab
+  workflow_dispatch:
+  # Trigger 3: hub pushes send repository_dispatch (see hub's notify-dsh.yml)
+  repository_dispatch:
+    types: [skills-updated]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch hub skills
+        env:
+          # If the hub repo is private, create a PAT secret named
+          # HUB_READ_TOKEN in this repo and uncomment the token line below.
+          # HUB_TOKEN: ${{ secrets.HUB_READ_TOKEN }}
+          HUB_TOKEN: ''
+        run: |
+          rm -rf /tmp/hub skills
+          if [ -n "$HUB_TOKEN" ]; then
+            git clone --depth 1 "https://x-access-token:${HUB_TOKEN}@github.com/redfox-data/redfox-community.git" /tmp/hub
+          else
+            git clone --depth 1 https://github.com/redfox-data/redfox-community.git /tmp/hub
+          fi
+          mkdir -p skills
+          cp -R /tmp/hub/skills/. skills/
+          # Never mirror macOS metadata junk into the package
+          find skills -name '.DS_Store' -delete
+
+      - name: Commit if changed
+        run: |
+          git config user.name "skills-sync[bot]"
+          git config user.email "skills-sync[bot]@users.noreply.github.com"
+          git add skills
+          if git diff --staged --quiet; then
+            echo "No skill changes"
+            exit 0
+          fi
+          git commit -m "chore: sync skills from redfox-community"
+          git push
