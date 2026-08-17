@@ -5,67 +5,67 @@
 </p>
 
 <p align="right">
-  中文
-  <a href="https://github.com/redfox-data/redfox-community-dsh/blob/main/README.en.md">English</a>
+  <a href="https://github.com/redfox-data/redfox-community-dsh/blob/main/README.zh.md">中文</a>
+  English
 </p>
 
 # redfox-community-dsh
 
-红狐数据（RedFoxHub）Skills的 DSH（DeepSeek Harness）官方 bundle 插件包：100+ 社媒数据技能（抖音 / 小红书 / 快手 / B站 / 公众号 / 视频号 / 微博 / YouTube / TikTok 等），以原生 DSH skill 形式一键安装。
+The official DSH (DeepSeek Harness) bundle of RedFoxHub skills: 100+ social-media data skills (Douyin / Xiaohongshu / Kuaishou / Bilibili / WeChat Official Accounts / WeChat Channels / Weibo / YouTube / TikTok and more), installable as native DSH skills with one command.
 
-## 功能亮点
+## Highlights
 
-- **112 枚技能即装即用**：覆盖内容搜索、热榜追踪、评论分析、视频下载、文案创作、账号诊断、日报订阅等场景
-- **主流平台全覆盖**：抖音、小红书、快手、B站、公众号、视频号、微博、知乎、头条，以及 YouTube、TikTok、Instagram、X(Twitter) 等海外平台
-- **原生体验**：以官方 bundle 技能包格式发布，安装后技能直接进入会话技能目录，支持 `/技能名` 手势精准调用
-- **持续更新**：技能库不断扩充与修订，插件包自动跟进，重新安装即可获取最新版本
+- **112 skills, ready to use**: content search, hot-trend tracking, comment analysis, video downloading, copywriting, account diagnostics, daily digest subscriptions and more
+- **Full platform coverage**: Douyin, Xiaohongshu, Kuaishou, Bilibili, WeChat Official Accounts, WeChat Channels, Weibo, Zhihu, Toutiao, plus overseas platforms like YouTube, TikTok, Instagram and X (Twitter)
+- **Native experience**: published in the official bundle skill-package format — once installed, skills appear directly in the session skill directory and support the `/skill-name` gesture for precise invocation
+- **Continuously updated**: the skill library keeps growing and improving; the bundle follows automatically, and reinstalling pulls the latest version
 
-## 安装
+## Installation
 
 ```sh
 dsh plugin --profile web add github:redfox-data/redfox-community-dsh
 dsh --profile web
 ```
 
-安装后重启 dsh web 生效。
+Restart dsh web after installation to take effect.
 
-## 使用
+## Usage
 
-重启后，全部技能自动出现在技能目录中：
+After restarting, all skills appear in the skill directory automatically:
 
-- 直接说出需求即可，Agent 会自动匹配技能，例如「搜一下小红书上最近的 AI 笔记」「分析这条抖音作品的评论」
-- 也可以用 `/技能名` 手势精准调用，如 `/douyin-search`、`/xiaohongshu-write`
+- Just describe what you need — the agent matches the right skill, e.g. "find recent AI notes on Xiaohongshu" or "analyze the comments on this Douyin video"
+- Or invoke precisely with the `/skill-name` gesture, e.g. `/douyin-search`, `/xiaohongshu-write`
 
-## 技能一览
+## Skill Overview
 
-| 平台 / 领域 | 数量 | 代表技能 |
-|-------------|------|----------|
-| 小红书 | 17 | 笔记搜索 / 实时搜索、评论分析、封面设计、账号诊断、对标账号推荐、笔记创作、涨粉榜单 |
-| 微信生态 | 19 | 公众号搜索 / 订阅、10w+ 热文推送、原创热文、视频号作品查询、爆款封面、AI 日报 |
-| 抖音 | 14 | 作品搜索 / 实时搜索、热榜、日榜 / 飙升榜、评论分析、账号订阅、TOP 账号榜 |
-| B站 | 7 | 视频搜索 / 下载、评论分析、关键词找账号 / 找作品、AI 日报 |
-| 快手 | 6 | 作品搜索、评论分析、视频下载、AI 日报 |
-| 微博 | 4 | 热搜榜、博文搜索、用户动态回采、评论分析 |
-| 海外平台 | 9 | YouTube 下载 / 提文案 / 评论、TikTok 视频与主页下载、Instagram 下载、X 下载 / 评论 / 作品搜索 |
-| 创作工具 | 10+ | 多平台文案改写、违禁词检测、AI 生图、AI 生视频、去 AI 味、视频提示词专家 |
-| 信息聚合 | — | 7 平台热搜聚合、文旅 / 短剧行业信息源、A股舆情、跨平台话题研究 |
+| Platform / Domain | Count | Representative Skills |
+|-------------------|-------|-----------------------|
+| Xiaohongshu | 17 | note search / realtime search, comment analysis, cover design, account diagnostics, benchmark account matching, note writing, follower-growth rankings |
+| WeChat ecosystem | 19 | official-account search / subscription, 100k+ article feed, original hot articles, Channels video query, viral covers, AI daily digest |
+| Douyin | 14 | video search / realtime search, hot trends, daily & surge rankings, comment analysis, account subscription, top-account rankings |
+| Bilibili | 7 | video search / download, comment analysis, keyword-based account & video discovery, AI daily digest |
+| Kuaishou | 6 | video search, comment analysis, video download, AI daily digest |
+| Weibo | 4 | hot search, post search, user feed backtracking, comment analysis |
+| Overseas platforms | 9 | YouTube download / transcript / comments, TikTok video & profile download, Instagram download, X download / comments / post search |
+| Creation tools | 10+ | multi-platform copywriting rewrite, prohibited-word check, AI image generation, AI video generation, de-AI-flavor polishing, video prompt expert |
+| Aggregated feeds | — | 7-platform hot-search hub, culture-tourism & short-drama industry feeds, A-share sentiment, cross-platform topic research |
 
-完整技能列表见 [skills/](skills) 目录。
+See the [skills/](skills) directory for the full list.
 
-## 更新与钉版本
+## Updating & Version Pinning
 
-技能库持续更新，重新执行安装命令即可拉取最新版：
+The skill library is updated continuously. Re-run the install command to pull the latest version:
 
 ```sh
 dsh plugin --profile web add -w github:redfox-data/redfox-community-dsh
 ```
 
-需要固定版本时，按 commit 或 release tag 安装：
+To pin a specific version, install by commit or release tag:
 
 ```sh
 dsh plugin --profile web add 'github:redfox-data/redfox-community-dsh#<commit>'
 ```
 
-## 许可证
+## License
 
 MIT
