@@ -44,7 +44,7 @@
       ],
       "requiresBuildApproval": false,
       "requiresRestart": true,
-      "manualSteps": false
+      "manualSteps": true
     }
   }
 }
