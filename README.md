@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://redfox.hk/?source=github">
+  <a href="https://redfox.hk/?source=dsh">
     <img src="https://lyy.redfox.hk/page/logo-redfox-name.png" alt="RedFox Logo" width="200">
   </a>
 </p>
@@ -41,12 +41,12 @@ After restarting, all skills appear in the skill directory automatically:
 
 In addition to skills, this bundle registers the [redfox-mcp](https://github.com/redfox-data/redfox-mcp) server over stdio, exposing 40 RedFoxHub data APIs as native tools named `mcp__redfox__*`:
 
-| Category | Tools |
-|---|---|
+| Category           | Tools                                                                                                                                                                        |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Platform data (26) | `douyin_*` / `xiaohongshu_*` / `wechat_*` / `bilibili_*` / `toutiao_*` / `tiktok_search_users` — work search, account search & info, work lists, work details, AI-work feeds |
-| AI search (3) | `ai_search_kimi`, `ai_search_doubao`, `ai_search_deepseek` — one call submits the query and waits for the full answer |
-| AI generation (4) | `gpt_image_generate`, `doubao_image_pro_generate`, `doubao_image_lite_generate`, `doubao_video_generate` — one call submits and waits; on timeout a `taskId` is returned |
-| Task follow-up (7) | the matching `*_result` tools — fetch a finished task by `taskId` after a timeout |
+| AI search (3)      | `ai_search_kimi`, `ai_search_doubao`, `ai_search_deepseek` — one call submits the query and waits for the full answer                                                        |
+| AI generation (4)  | `gpt_image_generate`, `doubao_image_pro_generate`, `doubao_image_lite_generate`, `doubao_video_generate` — one call submits and waits; on timeout a `taskId` is returned     |
+| Task follow-up (7) | the matching `*_result` tools — fetch a finished task by `taskId` after a timeout                                                                                            |
 
 MCP tools need two extra prerequisites (skills alone do not):
 
@@ -57,17 +57,17 @@ If the key is missing, every tool answers with a structured message explaining h
 
 ## Skill Overview
 
-| Platform / Domain | Count | Representative Skills |
-|-------------------|-------|-----------------------|
-| Xiaohongshu | 17 | note search / realtime search, comment analysis, cover design, account diagnostics, benchmark account matching, note writing, follower-growth rankings |
-| WeChat ecosystem | 19 | official-account search / subscription, 100k+ article feed, original hot articles, Channels video query, viral covers, AI daily digest |
-| Douyin | 14 | video search / realtime search, hot trends, daily & surge rankings, comment analysis, account subscription, top-account rankings |
-| Bilibili | 7 | video search / download, comment analysis, keyword-based account & video discovery, AI daily digest |
-| Kuaishou | 6 | video search, comment analysis, video download, AI daily digest |
-| Weibo | 4 | hot search, post search, user feed backtracking, comment analysis |
-| Overseas platforms | 9 | YouTube download / transcript / comments, TikTok video & profile download, Instagram download, X download / comments / post search |
-| Creation tools | 10+ | multi-platform copywriting rewrite, prohibited-word check, AI image generation, AI video generation, de-AI-flavor polishing, video prompt expert |
-| Aggregated feeds | — | 7-platform hot-search hub, culture-tourism & short-drama industry feeds, A-share sentiment, cross-platform topic research |
+| Platform / Domain  | Count | Representative Skills                                                                                                                                  |
+| ------------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Xiaohongshu        | 17    | note search / realtime search, comment analysis, cover design, account diagnostics, benchmark account matching, note writing, follower-growth rankings |
+| WeChat ecosystem   | 19    | official-account search / subscription, 100k+ article feed, original hot articles, Channels video query, viral covers, AI daily digest                 |
+| Douyin             | 14    | video search / realtime search, hot trends, daily & surge rankings, comment analysis, account subscription, top-account rankings                       |
+| Bilibili           | 7     | video search / download, comment analysis, keyword-based account & video discovery, AI daily digest                                                    |
+| Kuaishou           | 6     | video search, comment analysis, video download, AI daily digest                                                                                        |
+| Weibo              | 4     | hot search, post search, user feed backtracking, comment analysis                                                                                      |
+| Overseas platforms | 9     | YouTube download / transcript / comments, TikTok video & profile download, Instagram download, X download / comments / post search                     |
+| Creation tools     | 10+   | multi-platform copywriting rewrite, prohibited-word check, AI image generation, AI video generation, de-AI-flavor polishing, video prompt expert       |
+| Aggregated feeds   | —     | 7-platform hot-search hub, culture-tourism & short-drama industry feeds, A-share sentiment, cross-platform topic research                              |
 
 See the [skills/](skills) directory for the full list.
 
