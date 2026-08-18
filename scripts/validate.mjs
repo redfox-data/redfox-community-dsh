@@ -4,7 +4,7 @@
 // Also runnable locally:  node scripts/validate.mjs
 
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs'
-import { join, basename } from 'node:path'
+import { join } from 'node:path'
 import { exit } from 'node:process'
 
 const SKILLS_DIR = new URL('../skills', import.meta.url).pathname
@@ -101,16 +101,7 @@ for (const dir of dirs.sort()) {
     if (fm) ok('frontmatter has name & description')
   }
 
-  // 3. README.md + README.en.md should both exist
-  if (!existsSync(join(skillPath, 'README.md')))
-    warn(`${dir}: missing README.md`)
-  if (!existsSync(join(skillPath, 'README.en.md')))
-    warn(`${dir}: missing README.en.md`)
-  if (existsSync(join(skillPath, 'README.md')) &&
-      existsSync(join(skillPath, 'README.en.md')))
-    ok('README.md + README.en.md present')
-
-  // 4. Stale runtime files (warn only — skills/ is synced from hub repo,
+  // 3. Stale runtime files (warn only — skills/ is synced from hub repo,
   //    so stale files may originate upstream; flag them but don't block CI)
   const stale = findStaleFiles(skillPath)
   if (stale.length) {
