@@ -56,12 +56,14 @@ redfox-community-dsh/
 │   ├── sync-skills.yml      # hourly sync from hub
 │   └── validate.yml         # CI quality gate
 ├── scripts/
-│   └── validate.mjs         # structure validator
+│   ├── validate.mjs         # structure validator
+│   └── stats.mjs            # skill inventory statistics
 ├── skills/                  # ⚠️ synced from hub — do not edit
 ├── index.mjs                # bundle entry (Cordis plugin)
 ├── cordis.patch.yml         # DSH profile patch (MCP bridge config)
 ├── package.json             # npm metadata & DSH bundle config
-└── README.md / README.zh.md
+├── README.md / README.zh.md
+└── CONTRIBUTING.md
 ```
 
 ### Commit Conventions
@@ -180,12 +182,14 @@ redfox-community-dsh/
 │   ├── sync-skills.yml      # 每小时从 hub 同步
 │   └── validate.yml         # CI 质量门禁
 ├── scripts/
-│   └── validate.mjs         # 结构验证脚本
+│   ├── validate.mjs         # 结构验证脚本
+│   └── stats.mjs            # 技能库存统计
 ├── skills/                  # ⚠️ 从 hub 同步 — 禁止编辑
 ├── index.mjs                # bundle 入口（Cordis 插件）
 ├── cordis.patch.yml         # DSH profile 补丁（MCP 桥配置）
 ├── package.json             # npm 元数据 & DSH bundle 配置
-└── README.md / README.zh.md
+├── README.md / README.zh.md
+└── CONTRIBUTING.md
 ```
 
 ### 提交规范
