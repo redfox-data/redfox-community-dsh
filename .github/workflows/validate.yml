@@ -1,0 +1,29 @@
+name: Validate skills
+
+# Quality gate: runs on every push / PR to main.
+# Checks structural integrity of the skills/ tree so that
+# FileSystemSkillProvider can discover every skill correctly.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Skill structure checks
+        run: node scripts/validate.mjs
+
+      - name: package.json validity
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('package.json OK')"
